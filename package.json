@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve": "node ./build/cli.js serve",
+    "build": "node ./build/cli.js build"
   },
   "dependencies": {
+    "chalk": "^3.0.0",
     "core-js": "^3.8.3",
     "inquirer": "^7.3.3",
     "vue": "^3.2.13"

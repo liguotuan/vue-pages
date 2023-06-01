@@ -1,13 +1,47 @@
-inquirer.prompt([{
-    type: 'list',
-    name: 'package',
-    default: 0,
-    choices: [
-        { value: 'client', name: 'client' },
-        { value: 'admin', name: 'admin' }
-    ]
-  }]).then((error, result) => {
-    console.log('---error--->', error)
-    console.log('---result--->', result)
-    resolve(result)
-  })
+const chalk = require("chalk");
+const { execSync } = require("child_process");
+var inquirer = require("inquirer");
+const action = process.argv[2];
+
+const FN_MAP = {
+  serve: vueServe,
+  build: vueBuild,
+};
+if (!FN_MAP[action]) {
+  return;
+}
+
+inquirer
+  .prompt([
+    {
+      type: "checkbox",
+      name: "modules",
+      default: 0,
+      choices: [
+        { value: "client", name: "client" },
+        { value: "user", name: "user" },
+      ],
+    },
+  ])
+  .then((result) => {
+    FN_MAP[action](result.modules);
+  });
+
+function vueServe(pageName = []) {
+  console.log(pageName)
+  pageName.forEach((name) => {
+    execSync(`cross-env PAGE_NAME=${name} vue-cli-service serve`, {
+      stdio: "inherit",
+    });
+  });
+}
+
+function vueBuild(pageName = []) {
+  pageName.forEach((name) => {
+    console.log(`${chalk.blue.bold('Waiting For Server Start...')}`);
+    execSync(`cross-env PAGE_NAME=${name} vue-cli-service build`, {
+      stdio: "inherit",
+    });
+  });
+}
+
