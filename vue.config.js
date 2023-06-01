@@ -4,6 +4,7 @@ const { PAGE_NAME } = process.env;
 
 console.log('PAGE_NAME', PAGE_NAME)
 module.exports = defineConfig({
+  publicPath: "./",
   outputDir: `dist/${PAGE_NAME}`,
   pages: {
     [PAGE_NAME]: pages[PAGE_NAME] },
