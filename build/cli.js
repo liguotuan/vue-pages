@@ -11,8 +11,7 @@ if (!FN_MAP[action]) {
   return;
 }
 
-inquirer
-  .prompt([
+inquirer.prompt([
     {
       type: "checkbox",
       name: "modules",
@@ -22,13 +21,11 @@ inquirer
         { value: "user", name: "user" },
       ],
     },
-  ])
-  .then((result) => {
+  ]).then((result) => {
     FN_MAP[action](result.modules);
   });
 
 function vueServe(pageName = []) {
-  console.log(pageName)
   pageName.forEach((name) => {
     execSync(`cross-env PAGE_NAME=${name} vue-cli-service serve`, {
       stdio: "inherit",
@@ -38,7 +35,7 @@ function vueServe(pageName = []) {
 
 function vueBuild(pageName = []) {
   pageName.forEach((name) => {
-    console.log(`${chalk.blue.bold('Waiting For Server Start...')}`);
+    console.log(`${chalk.blue.bold('Waiting For Server Build...')}`);
     execSync(`cross-env PAGE_NAME=${name} vue-cli-service build`, {
       stdio: "inherit",
     });

@@ -1,4 +1,4 @@
 <template>
-    <div>cliexixixixint</div>
+    <router-view></router-view>
 </template>
 
