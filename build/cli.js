@@ -25,11 +25,9 @@ inquirer.prompt([
     FN_MAP[action](result.modules);
   });
 
-function vueServe(pageName = []) {
-  pageName.forEach((name) => {
-    execSync(`cross-env PAGE_NAME=${name} vue-cli-service serve`, {
-      stdio: "inherit",
-    });
+function vueServe(PAGE_NAME = []) {
+  execSync(`cross-env PAGE_NAME=${PAGE_NAME} vue-cli-service serve`, {
+    stdio: "inherit",
   });
 }
 
