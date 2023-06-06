@@ -1,4 +1,4 @@
-const CND = {
+const CDN = {
   development: {
     js: [
       "https://unpkg.com/vue@3.2.13/dist/vue.global.js",
@@ -19,4 +19,4 @@ const CND = {
   }
 };
 const env = process.env.NODE_ENV
-module.exports = CND[env]
+module.exports = CDN[env]
