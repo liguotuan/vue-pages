@@ -2,6 +2,7 @@ const chalk = require("chalk");
 const { execSync } = require("child_process");
 var inquirer = require("inquirer");
 const action = process.argv[2];
+const env = process.argv[3];
 
 const FN_MAP = {
   serve: vueServe,
@@ -13,7 +14,7 @@ if (!FN_MAP[action]) {
 
 inquirer.prompt([
     {
-      type: "list",
+      type: action == 'serve' ? "list" : 'checkbox',
       name: "modules",
       default: 0,
       choices: [
