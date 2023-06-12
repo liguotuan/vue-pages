@@ -13,7 +13,7 @@ if (!FN_MAP[action]) {
 
 inquirer.prompt([
     {
-      type: "list",
+      type: action == 'serve' ? "list" : 'checkbox',
       name: "modules",
       default: 0,
       choices: [
