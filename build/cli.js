@@ -2,6 +2,7 @@ const chalk = require("chalk");
 const { execSync } = require("child_process");
 var inquirer = require("inquirer");
 const action = process.argv[2];
+const env = process.argv[3];
 
 const FN_MAP = {
   serve: vueServe,
