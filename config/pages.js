@@ -1,14 +1,23 @@
 const cdn = require('../cdn')
 
 const pagesConfig = {
-  user: {
+  index: {
     publicPath: "./",
-    entry: "src/modules/user/main.js",
-    template: "public/index.html",
+    entry: "src/modules/client/main.js",
+    template: "../public/index.html",
     filename: "index.html",
-    title: "user",
-    outputDir: "dist/user",
-    chunks: ["chunk-vendors", "chunk-common", "user"],
+    title: "index",
+    outputDir: "dist/index",
+    chunks: ["chunk-vendors", "chunk-common", "index"],
+  },
+  admin: {
+    publicPath: "./",
+    entry: "src/modules/admin/main.js",
+    filename: "index.html",
+    title: "client",
+    template: "src/modules/admin/index.html",
+    outputDir: "dist/admin",
+    chunks: ["chunk-vendors", "chunk-common", "admin"],
     cdn
   },
   client: {
@@ -16,7 +25,7 @@ const pagesConfig = {
     entry: "src/modules/client/main.js",
     filename: "index.html",
     title: "client",
-    template: "public/index.html",
+    template: "src/modules/client/index.html",
     outputDir: "dist/client",
     chunks: ["chunk-vendors", "chunk-common", "client"],
     cdn
